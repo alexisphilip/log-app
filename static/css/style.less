@@ -1,0 +1,312 @@
+// ######
+// GLOBAL
+// ######
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+main {
+    flex: 1;
+}
+
+.template-list {
+    display: none;
+}
+
+/**
+ * Default scrollbar's style.
+ */
+
+:root {
+    // Scrollbar's background size.
+    --scrollbar-track-size: 16px;
+    // Scrollbar's size.
+    --scrollbar-thumb-size: 10px;
+    // Scrollbar's content color.
+    --scrollbar-track-color: var(--bs-gray-200);
+    // Scrollbar's color.
+    --scrollbar-thumb-color: var(--bs-gray-500);
+
+    ::-webkit-scrollbar {
+        // Mostly for vertical scroll bars.
+        width: var(--scrollbar-track-size);
+        // Mostly for horizontal scroll bars.
+        height: var(--scrollbar-track-size);
+        box-shadow: inset 0 0 2px 2px var(--scrollbar-thumb-color);
+    }
+
+    // Scrollbar's background.
+    ::-webkit-scrollbar-track {
+        background: var(--scrollbar-track-color);
+        box-shadow: inset 0 0 1px 0px var(--scrollbar-thumb-color);
+    }
+
+    // Scrollbar.
+    ::-webkit-scrollbar-thumb {
+        background: var(--scrollbar-thumb-color);
+        border-radius: var(--scrollbar-track-size);
+        border: calc((var(--scrollbar-track-size) - var(--scrollbar-thumb-size)) / 2) solid transparent;
+        // Allows the thumb's background color to not overflow behind the border, to the transparent's border shows the track behind it.
+        background-clip: content-box;
+    }
+
+    // Scrollbar's corner, inheriting the background's color by being transparent.
+    ::-webkit-scrollbar-corner {
+        background: transparent;
+    }
+}
+
+html[data-bs-theme="dark"] {
+    // Scrollbar's content color.
+    --scrollbar-track-color: var(--bs-gray-900);
+    // Scrollbar's color.
+    --scrollbar-thumb-color: var(--bs-gray-700);
+}
+
+
+// ###############
+// BOOTSTRAP FIXES
+// ###############
+
+.sticky-top {
+    z-index: unset;
+}
+
+
+// ##################
+// BOOTSTRAP UPGRADES
+// ##################
+
+.btn-xs {
+    font-size: 12px;
+    padding: 0 0.125rem;
+}
+
+
+// #############
+// ACCESSIBILITY
+// #############
+
+[data-bs-original-title]:not(button, a) {
+    cursor: help;
+}
+
+[disabled] {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+
+// #########
+// UTILITIES
+// #########
+
+.flex-1 {
+    flex: 1;
+}
+
+.striped-bg,
+.striped-overlay {
+
+    --background: repeating-linear-gradient(
+        45deg,
+        rgba(var(--color), 0.2),
+        rgba(var(--color), 0.2) 10px,
+        rgba(var(--color), 0.05) 10px,
+        rgba(var(--color), 0.05) 20px
+    );
+
+}
+
+.striped {
+
+    &-bg {
+        background: var(--background);
+    }
+
+    &-overlay {
+        position: relative;
+        background: unset;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--background);
+        }
+    }
+
+    &-success {
+        --color: var(--bs-success-rgb);
+    }
+    
+    &-warning {
+        --color: var(--bs-warning-rgb);
+    }
+    
+    &-danger {
+        --color: var(--bs-danger-rgb);
+    }
+}
+
+
+// ##########
+// MAIN STYLE
+// ##########
+
+table.log-list {
+    font-size: 13px;
+    // Fixes Bootstrap's border.
+    border-top: transparent;
+    border-left: transparent;
+
+    tr {
+        &:hover {
+            font-weight: bold;
+            cursor: zoom-in;
+        }
+
+        &.opened {
+
+            &:hover {
+                cursor: zoom-out;
+            }
+
+            td span {
+                -webkit-line-clamp: unset;
+            }
+        }
+
+        td {
+            background-color: unset !important;
+
+            pre {
+                font-size: inherit;
+            }
+
+            span {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-line-clamp: 5;
+                -webkit-box-orient: vertical;
+            }
+        }
+
+        // th,
+        // td {
+        //     &[data-col-name="message"] {
+        //         width: 16rem;
+        //     }
+        // }
+    }
+}
+
+table.no-style {
+    tr,
+    td {
+        padding: 0;
+    }
+}
+
+
+// ################
+// LAYOUT CONTAINER
+// ################
+
+.side-bar-tab-wrapper {
+    &[data-id="left"] {
+        .side-bar-tab {
+            width: 300px;
+            // Bootstrap's .border-end
+            border-right: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color) !important;
+        }
+    }
+
+    &[data-id="bottom"] {
+        .side-bar-tab {
+            height: 300px;
+            // Bootstrap's .border-top
+            border-top: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color) !important;
+        }
+    }
+}
+
+
+// ########
+// SIDE BAR
+// ########
+
+.side-bar-action {
+    --size: 58px;
+    height: var(--size);
+    width: var(--size);
+    border-left: none;
+    border-top: none;
+    border-right: none;
+    border-radius: 0;
+
+    // Icon inside it
+    > i {
+        font-size: 1.75rem;
+    }
+}
+
+
+// #############
+// FILE EXPLORER
+// #############
+
+.file-explorer {
+
+    &--element {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 0.5rem;
+        font-family: Consolas;
+        border-left: 4px solid transparent;
+
+        &:hover,
+        &.active {
+            background-color: var(--bs-secondary-bg);
+            border-left: 4px solid var(--bs-border-color);
+        }
+
+        &.active {
+            font-weight: bold;
+        }
+    }
+
+    &--folder {
+
+    }
+
+    &--file {
+
+    }
+}
+
+
+// #######
+// MARK.JS
+// #######
+
+mark[data-markjs] {
+    padding: 0;
+}
+
+html:not([bs-theme="dark"]) mark[data-markjs] {
+    background-color: #ffd758;
+}

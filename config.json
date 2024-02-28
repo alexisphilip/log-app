@@ -1,0 +1,27 @@
+{
+    "LOGS_DIR_PRODUCTION": "data/logs/",
+    "LOGS_DIR_DEVELOPMENT": "data/logs-development/",
+    "LOCAL_TIMEZONE": "Europe/Paris",
+    "ORIGIN_COLOR_LIST": {
+        "php": {
+            "bootstrapColorType": "primary",
+            "colorLight": "#f1f8ff",
+            "colorDark": "#031633"
+        },
+        "js": {
+            "bootstrapColorType": "warning",
+            "colorLight": "#fff9f1",
+            "colorDark": "#332701"
+        },
+        "sql": {
+            "bootstrapColorType": "danger",
+            "colorLight": "#fff1f1",
+            "colorDark": "#2c0b0e"
+        },
+        "default": {
+            "bootstrapColorType": "secondary",
+            "colorLight": "#f1f1f1",
+            "colorDark": "#232323"
+        }
+    }
+}

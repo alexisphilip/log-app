@@ -1,0 +1,49 @@
+/* terminal.js style */
+
+.terminal {
+    font-family: consolas;
+    background-color: var(--bs-gray-700);
+    color: white;
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column-reverse;
+    overflow: auto;
+}
+
+.terminal-entries {
+    
+}
+
+.terminal-entry {
+    margin-bottom: 0;
+    font-size: inherit;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.terminal-content {
+    
+}
+
+.terminal-input-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.terminal-prompt {
+    color: limegreen;
+}
+
+.terminal-input {
+    flex: 1;
+    margin: 0;
+    padding: 0;
+    font-family: inherit;
+    background-color: inherit;
+    color: inherit;
+    outline: none;
+    border: none;
+}
