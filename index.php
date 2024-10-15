@@ -70,6 +70,15 @@ try {
     require_once("includes/class/App.php");
 
 
+    // ##########
+    // PHP CHECKS
+    // ##########
+
+    if (!extension_loaded("mbstring")) {
+        throw new Exception("You must load PHP's 'mbstring' extension. Go to the 'php.ini' config file to enable it.");
+    }
+
+
     // ######
     // ROUTER
     // ######
